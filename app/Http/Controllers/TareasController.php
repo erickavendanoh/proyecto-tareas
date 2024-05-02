@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use app\models\Tarea;
+use App\Models\Tarea;
 
 class TareasController extends Controller
 {
@@ -33,5 +33,11 @@ class TareasController extends Controller
 
         //Ya una vez insertado se va redirige a parte de "tareas" en views, con el mensaje, que se inyecta en la solicitud de respuesta
         return redirect()->route('tareas')->with('success','Tarea creada correctamente');
+    }
+
+    //para mostrar listado de tareas
+    public function index(){
+        $tareas = Tarea::all(); //all() es un método estático. Igual fue "Tarea::" porque no es necesario crear un nuevo objeto
+        return view('tareas.index', ['Tareas'=> $tareas]); //se le pasa la info, como arreglo, a la vista
     }
 }
