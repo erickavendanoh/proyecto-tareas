@@ -38,6 +38,31 @@ class TareasController extends Controller
     //para mostrar listado de tareas
     public function index(){
         $tareas = Tarea::all(); //all() es un método estático. Igual fue "Tarea::" porque no es necesario crear un nuevo objeto
-        return view('tareas.index', ['Tareas'=> $tareas]); //se le pasa la info, como arreglo, a la vista
+        return view('tareas.index', ['tareas'=> $tareas]); //se le pasa la info, como arreglo, a la vista
+    }
+
+    public function show($id){
+        $tarea = Tarea::find($id);
+        return view('tareas.show', ['tarea'=> $tarea]);
+    }
+
+    // Request $request es lo que se está recibiendo del formulario, igual que en store()
+    public function update(Request $request, $id){
+        $tarea = Tarea::find($id);
+        $tarea->title = $request->title; //asigna valor de campo identificado con "title" (en este caso con atributo name) del HTML ( como en el store() )
+
+        // dd es como un console.log
+        // dd($tarea);
+        // dd($request);
+
+        $tarea->save();
+
+        return redirect()->route('tareas')->with('success','Tarea actualizada!');
+    }
+
+    public function destroy($id){
+        $tarea = Tarea::find($id);
+        $tarea->delete();
+        return redirect()->route('tareas')->with('success','Tarea ha sido eliminada!');
     }
 }
