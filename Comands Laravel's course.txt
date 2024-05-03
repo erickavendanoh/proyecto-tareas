@@ -11,7 +11,7 @@ mysql -u root -p (solo fue para comandos como "use *DB*", "show databases;", "de
 *Después de crear y/o modificar un modelo:
 php artisan migrate
 
-*Para regresar cambios de una migración (la última hecha)
+*Para regresar cambios o deshacer migraciones hechas 
 php artisan migrate:rollback
 
 php artisan make:controller *nombre (en plural)*Controller

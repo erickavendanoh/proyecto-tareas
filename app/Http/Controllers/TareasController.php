@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Tarea;
+use App\Models\Categoria;
 
 class TareasController extends Controller
 {
@@ -29,6 +30,7 @@ class TareasController extends Controller
 
         $tarea = new Tarea;
         $tarea->title = $request->title; //Se asigna, ya validado, el valor en campo HTML al atributo correspondiente del modelo
+        $tarea->categoria_id = $request->categoria_id;
         $tarea->save(); //método que tienen todos los modelos para poder guardar un nuevo elemento en la BD
 
         //Ya una vez insertado se va redirige a parte de "tareas" en views, con el mensaje, que se inyecta en la solicitud de respuesta
@@ -38,7 +40,8 @@ class TareasController extends Controller
     //para mostrar listado de tareas
     public function index(){
         $tareas = Tarea::all(); //all() es un método estático. Igual fue "Tarea::" porque no es necesario crear un nuevo objeto
-        return view('tareas.index', ['tareas'=> $tareas]); //se le pasa la info, como arreglo, a la vista
+        $categorias = Categoria::all(); //para rellenar el select con categorías creadas
+        return view('tareas.index', ['tareas'=> $tareas, 'categorias'=>$categorias]); //se le pasa la info, como arreglo, a la vista
     }
 
     public function show($id){

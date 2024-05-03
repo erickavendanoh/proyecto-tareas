@@ -80,6 +80,10 @@ class CategoriasController extends Controller
     public function destroy(string $categoria)
     {
         $categoria = Categoria::find($categoria);
+        //Para eliminar todas las tareas que estén relacionadas en su campo "categoria_id" con la categoría que se va a eliminar, para que no de error de restricción de FK
+        $categoria->tareas()->each(function($tarea){
+            $tarea->delete();
+        });
         $categoria->delete();
 
         return redirect()->route('categorias.index')->with('success', 'Categoria eliminada!');

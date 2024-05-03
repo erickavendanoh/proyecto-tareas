@@ -43,10 +43,10 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="#">Tareas</a>
+                        <a class="nav-link" aria-current="page" href="{{route('tareas')}}">Tareas</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Categorias</a>
+                        <a class="nav-link" href="{{route('categorias.index')}}">Categorias</a>
                     </li>
                 </ul>
             </div>

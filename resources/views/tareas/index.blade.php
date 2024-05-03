@@ -22,6 +22,14 @@
                 <label for="title" class="form-label">Título de la tarea</label>
                 <input type="text" class="form-control" name="title">
             </div>
+
+            <label for="categoria_id" class="form-label">Categoría de la tarea</label>
+            <select name="categoria_id" class="form-select">
+                @foreach ($categorias as $categoria)
+                    <option value="{{$categoria->id}}">{{$categoria->name}}</option>
+                @endforeach
+            </select>
+
             <button type="submit" class="btn btn-primary">Crear nueva tarea</button>
         </form>
         <!--Para mostrar los registros-->
