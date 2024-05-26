@@ -13,9 +13,14 @@ las ejecuciones y demás
 
 
 *Se estuvo trabajando con un Repo en GitHub que hice para cuando avanzaba el curso en el trabajo y en casa. 
-*COMANDOS Y OTRAS NOTAS EN "Documentos" en PC del trabajo.
-*SE TIENE QUE IR CAMBIANDO/GENERANDO (SI ES EL CASO) EL .env CADA VEZ QUE SE CORRA ENTRE UNA MÁQUINA Y OTRA POR CUESTIONES DE...
+Si después de clonarlo (comando git clone con link HTTPS del repo) y querer correrlo (php artisan serve) no funciona:
+-Si el error es algo de "...PHP Warning:  require(C:\Users\Erick\Desktop\Laravel\proyecto-tareas/vendor/autoload.php): Failed....
+...to open stream: No such file or directory in C:\Users\Erick\Desktop\Laravel\proyecto-tareas\artisan on line 18...":
+  ejecutar comando "composer install"
+-SE TIENE QUE IR CAMBIANDO/GENERANDO (SI ES EL CASO) EL .env CADA VEZ QUE SE CORRA ENTRE UNA MÁQUINA Y OTRA POR CUESTIONES DE...
  ...CREDENCIALES PARA LA BD. CREAR LA BD. Y HACER LAS MIGRACIONES (con "php artisan migrate")
+-Si el error es algo de "SQLSTATE[42S02]: Base table or view not found: 1146 Table 'tareas.sessions' doesn't exist":
+  ejecutar comandos: "php artisan session:table" y luego "php artisan migrate"
 
 Para crear un proyecto en Laravel, y este proyecto se necesita:
 -PHP (versión > 7.0) (En drive en carpeta "Configuraciones e Instalaciones PC's" viene como instalar PHP de 0)
